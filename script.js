@@ -16,7 +16,7 @@ function removeCurrentDrinkList() {
 
 function removeDrinkRecipe() {
     document.querySelector("#drinkName").textContent = "";
-    document.querySelector("#drinkImage").src = ""; // need to remove image completely
+    document.querySelector("#drinkImage").style.visibility = "hidden";
     document.querySelector("#drinkInstructions").textContent = "";
     removeCurrentIngredientList();
 };
@@ -67,6 +67,7 @@ function handleClick(drink) {
     console.log(drink);
     document.querySelector("#drinkName").textContent = drink.strDrink;
     document.querySelector("#drinkImage").src = drink.strDrinkThumb;
+    document.querySelector("#drinkImage").style.visibility = "visible";
     document.querySelector("#drinkInstructions").textContent = drink.strInstructions;
     removeCurrentIngredientList();
     createIngredientList(drink);
