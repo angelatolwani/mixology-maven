@@ -29,15 +29,17 @@ function getDrinkList(searchTerm) {
         const drinksObj = drinks.drinks;
         const ul = document.querySelector("#drinkList");
         drinksObj.forEach((drink, index) => {
-            console.log(drink);
             const li = document.createElement("li");
             li.textContent = drink.strDrink;
             li.id = drink.idDrink;
             li.classList.add("drink");
             li.addEventListener("mouseover", event => {
                 event.preventDefault();
-                const drinkThumbnail = displayThumbnail(drink);
-                // li.append(drinkThumbnail); // find a way to add the thumbnail as a smaller size
+                createThumbnail(event.target, drink);
+            });
+            li.addEventListener("mouseout", event => {
+                event.preventDefault();
+                document.querySelector("#thumbnailPic").remove();
             });
             li.addEventListener("click", event => {
                 event.preventDefault();
@@ -49,11 +51,16 @@ function getDrinkList(searchTerm) {
     .catch(error => document.querySelector("#drinkList").textContent=error);
 };
 
-function displayThumbnail(drink) {
+function createThumbnail(li, drink) {
     const img = document.createElement("img");
     img.src = drink.strDrinkThumb;
+    img.width = "100";
+    img.height = "100";
     img.alt = "no image to display";
-    return img;
+    img.style.position = "absolute";
+    img.style.zIndex = "1";
+    img.id = "thumbnailPic";
+    li.append(img);
 };
 
 function handleClick(drink) {
@@ -70,7 +77,6 @@ function removeCurrentIngredientList() {
         document.querySelector("li.ingredient").remove();
     }
 };
-
 
 function createIngredientList(drink) {
     const ol = document.querySelector("#drinkIngredients");
