@@ -83,9 +83,14 @@ function createIngredientList(drink) {
     let i = 1;
     while (drink[`strIngredient${i}`] !== null) {
         const li = document.createElement("li");
-        const ingredient = drink[`strIngredient${i}`]; // find a way to remove the ingredient value if null
-        const measurement = drink[`strMeasure${i}`];
-        li.textContent = measurement + " " + ingredient;
+        const ingredient = drink[`strIngredient${i}`];
+        let measurement = "";
+        if (drink[`strMeasure${i}`] !== null) {
+            measurement = drink[`strMeasure${i}`] + " ";
+        } else {
+            measurement = "";
+        }
+        li.textContent = measurement + ingredient;
         li.classList.add("ingredient");
         ol.append(li);
         i++;
