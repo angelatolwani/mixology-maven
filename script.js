@@ -27,28 +27,38 @@ function getDrinkList(searchTerm) {
     .then(response => response.json())
     .then(drinks => {
         const drinksObj = drinks.drinks;
-        const ul = document.querySelector("#drinkList");
-        drinksObj.forEach((drink, index) => {
-            const li = document.createElement("li");
-            li.textContent = drink.strDrink;
-            li.id = drink.idDrink;
-            li.classList.add("drink");
-            li.addEventListener("mouseover", event => {
-                event.preventDefault();
-                createThumbnail(event.target, drink);
-            });
-            li.addEventListener("mouseout", event => {
-                event.preventDefault();
-                document.querySelector("#thumbnailPic").remove();
-            });
-            li.addEventListener("click", event => {
-                event.preventDefault();
-                handleClick(drink);
-            });
-            ul.append(li);
-        })
+        // console.log(drinksObj);
+        if (drinksObj !== null) {
+            document.querySelector("#errorMessage").textContent = "";
+            createMenu(drinksObj);
+        } else {
+            document.querySelector("#errorMessage").textContent = "No drink found";
+        }
     })
     .catch(error => document.querySelector("#drinkList").textContent=error);
+};
+
+function createMenu(drinksObj) {
+    const ul = document.querySelector("#drinkList");
+    drinksObj.forEach((drink, index) => {
+        const li = document.createElement("li");
+        li.textContent = drink.strDrink;
+        li.id = drink.idDrink;
+        li.classList.add("drink");
+        li.addEventListener("mouseover", event => {
+            event.preventDefault();
+            createThumbnail(event.target, drink);
+        });
+        li.addEventListener("mouseout", event => {
+            event.preventDefault();
+            document.querySelector("#thumbnailPic").remove();
+        });
+        li.addEventListener("click", event => {
+            event.preventDefault();
+            handleClick(drink);
+        });
+        ul.append(li);
+    })
 };
 
 function createThumbnail(li, drink) {
