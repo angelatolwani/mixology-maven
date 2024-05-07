@@ -1,14 +1,73 @@
 body {
     background: #cec6b6;
-  }
-
-  h1 {
+    width: 100%;
+    height: 100%;
+    margin: 0;
     color: #283f4b;
   }
 
+div {
+  text-align: center;
+}
 
-  /* ul {
-    /* list-style-type: none; */
-    /* margin: 0; */
-    /* padding: 0; */
-  /* } */ */
+h1 {
+  /* color: #283f4b; */
+  text-align: center;
+}
+
+img {
+  max-width: 100%; /* Ensure images do not overflow their containers */
+  height: auto; /* Maintain aspect ratio */
+  /* border: 2px solid #283f4b; /* Consistent border as defined earlier */
+}
+
+#drinkMenu {
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+li.drink {
+    cursor: pointer; /* Make it clear that the items are clickable */
+    padding: 2px 10px; /* Add padding for better spacing */
+    display: inline-block; /* Makes the element only as wide as its content */
+    margin: 5px 0; /* Adds vertical margin for spacing between items */
+    list-style-type: none; /* removes bullets */
+}
+
+li.drink:hover {
+  background-color: #f0f0f0;
+  font-style: italic; /* A hover effect to indicate interactivity */
+}
+
+/* Error message styling */
+#errorMessage {
+  color: rgb(116, 32, 32); /* Make the error message stand out */
+  font-weight: bold; /* Emphasize the error message */
+  font-size: large;
+}
+
+#drinkRecipe{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  /* border: 2px solid #283f4b; Solid border, dark gray color */
+  padding: 10px; /* Padding inside the container */
+  margin: 5px auto;
+  width: 50%; /* Adjust width as needed, or use max-width */
+  /* box-shadow: 0px 0px 8px #aaa; Optional: Adds a subtle shadow for depth */
+}
+
+/* .recipeLabels {
+  display: none;
+} */
+
+/* Styling for ingredients list */
+ol {
+  list-style-type: decimal; /* Ensures that numbering is on */
+  padding-left: 40px; /* Provides space for numbers */
+}
+
+li.ingredient {
+  display: list-item; /* Ensures list item displays with a number */
+  text-align: left; /* Aligns the text to the left */
+}

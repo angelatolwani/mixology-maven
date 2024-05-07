@@ -6,10 +6,14 @@
         <script defer src="script.js"></script>
     </head>
     <body>
-        <h1>Your Favorite Drink</h1>
+        <div id="header">
+            <!-- <img src = "./images/drinks1.png" width="100" height="100"> -->
+            <h1>Your Favorite Drink</h1>
+            <!-- <img src = "./images/drinks2.png" width="100" height="100"> -->
+        </div>
         <div>
             <form id="searchBox">
-                <label>Search for a drink</label>
+                <label>Enter Drink Name</label>
                 <input type="text" id="drink" />
                 <input type="submit" value="Search" />
             </form>
@@ -20,7 +24,7 @@
         </div>
         <div id="drinkRecipe">
             <h3 id="drinkName"></h3>
-            <img id="drinkImage" width="100" height="100"/>
+            <img id="drinkImage" width="200" height="200"/>
             <ol id="drinkIngredients"></ol>
             <p id="drinkInstructions"></p>
         </div>

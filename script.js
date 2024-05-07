@@ -27,7 +27,6 @@ function getDrinkList(searchTerm) {
     .then(response => response.json())
     .then(drinks => {
         const drinksObj = drinks.drinks;
-        // console.log(drinksObj);
         if (drinksObj !== null) {
             document.querySelector("#errorMessage").textContent = "";
             createMenu(drinksObj);
@@ -70,6 +69,7 @@ function createThumbnail(li, drink) {
     img.style.position = "absolute";
     img.style.zIndex = "1";
     img.id = "thumbnailPic";
+    img.style.border = "2px solid white";
     li.append(img);
 };
 
@@ -77,6 +77,7 @@ function handleClick(drink) {
     console.log(drink);
     document.querySelector("#drinkName").textContent = drink.strDrink;
     document.querySelector("#drinkImage").src = drink.strDrinkThumb;
+    document.querySelector("#drinkImage").style.border = "4px solid white";
     document.querySelector("#drinkImage").style.visibility = "visible";
     document.querySelector("#drinkInstructions").textContent = drink.strInstructions;
     removeCurrentIngredientList();
