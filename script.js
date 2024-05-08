@@ -6,20 +6,7 @@ document.querySelector("#searchBox").addEventListener("submit", event => {
         removeDrinkRecipe();
     };
     getDrinkList(searchTerm);
-})
-
-function removeCurrentDrinkList() {
-    while (document.querySelectorAll("li.drink").length > 0) {
-        document.querySelector("li.drink").remove();
-    }
-};
-
-function removeDrinkRecipe() {
-    document.querySelector("#drinkName").textContent = "";
-    document.querySelector("#drinkImage").style.visibility = "hidden";
-    document.querySelector("#drinkInstructions").textContent = "";
-    removeCurrentIngredientList();
-};
+});
 
 
 function getDrinkList(searchTerm) {
@@ -70,6 +57,7 @@ function createThumbnail(li, drink) {
     img.style.zIndex = "1";
     img.id = "thumbnailPic";
     img.style.border = "2px solid white";
+    img.style.boxShadow = "0px 0px 8px #aaa";
     li.append(img);
 };
 
@@ -79,15 +67,12 @@ function handleClick(drink) {
     document.querySelector("#drinkImage").src = drink.strDrinkThumb;
     document.querySelector("#drinkImage").style.border = "4px solid white";
     document.querySelector("#drinkImage").style.visibility = "visible";
+    document.querySelector("#drinkImage").style.boxShadow = "0px 0px 8px #aaa";
+    document.querySelector("#ingredientTitle").textContent = "Ingredients";
+    document.querySelector("#instructionsTitle").textContent = "Instructions";
     document.querySelector("#drinkInstructions").textContent = drink.strInstructions;
     removeCurrentIngredientList();
     createIngredientList(drink);
-};
-
-function removeCurrentIngredientList() {
-    while (document.querySelectorAll("li.ingredient").length > 0) {
-        document.querySelector("li.ingredient").remove();
-    }
 };
 
 function createIngredientList(drink) {
@@ -107,4 +92,25 @@ function createIngredientList(drink) {
         ol.append(li);
         i++;
     };
+};
+
+function removeCurrentIngredientList() {
+    while (document.querySelectorAll("li.ingredient").length > 0) {
+        document.querySelector("li.ingredient").remove();
+    }
+};
+
+function removeCurrentDrinkList() {
+    while (document.querySelectorAll("li.drink").length > 0) {
+        document.querySelector("li.drink").remove();
+    }
+};
+
+function removeDrinkRecipe() {
+    document.querySelector("#drinkName").textContent = "";
+    document.querySelector("#drinkImage").style.visibility = "hidden";
+    document.querySelector("#drinkInstructions").textContent = "";
+    document.querySelector("#ingredientTitle").textContent = "";
+    document.querySelector("#instructionsTitle").textContent = "";
+    removeCurrentIngredientList();
 };
