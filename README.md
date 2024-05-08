@@ -27,3 +27,4 @@ Stetch goals (Unmet):
 Next Steps: 
 - Enable the interactivity on the favorites list similar to the interactivity of the menu (mouse over, click)
 - Prevent user from adding the same drink to the favorites list multiple times
+- Allow the user to delete an item from the favorites list

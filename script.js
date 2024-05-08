@@ -118,17 +118,24 @@ function removeDrinkRecipe() {
     removeCurrentIngredientList();
 };
 
+// Create a favorite button, use fetch request to update db.json when user adds a new favorite, and display favorites in a sidebar
 
-addFavoriteButton();
-function addFavoriteButton() {
-    const button = document.querySelector("#favoriteButton");
-    button.addEventListener("click", event => {
-        event.preventDefault();
-        addToFavorites();
-        button.textContent = "Added to Favorites!";
-        button.style.color = 'red';
-    });
-};
+fetch("http://localhost:3000/favoriteDrinks")
+.then(response => response.json())
+.then(favoriteDrinks => {
+    favoriteDrinks.forEach(newDrink => {
+        addNewDrinkLi(newDrink);
+    })
+})
+.catch(error => console.log(error));
+
+const button = document.querySelector("#favoriteButton");
+button.addEventListener("click", event => {
+    event.preventDefault();
+    addToFavorites();
+    button.textContent = "Added to Favorites!";
+    button.style.color = 'red';
+});
 
 function addToFavorites() {
     const drinkName = document.querySelector("#drinkName").textContent;
@@ -144,24 +151,15 @@ function addToFavorites() {
     })
     .then(response => response.json())
     .then(newDrink => {
-        const li = document.createElement("li");
-        li.textContent = newDrink.strName;
-        li.classList.add("favorite");
-        const ul = document.querySelector("#favoritesList");
-        ul.append(li);
+        addNewDrinkLi(newDrink);
     })
     .catch(error => console.log(error))
 };
 
-fetch("http://localhost:3000/favoriteDrinks")
-    .then(response => response.json())
-    .then(favoriteDrinks => {
-        favoriteDrinks.forEach(favoriteDrink => {
-            const li = document.createElement("li");
-            li.textContent = favoriteDrink.strName;
-            li.classList.add("favorite");
-            const ul = document.querySelector("#favoritesList");
-            ul.append(li);
-        })
-    })
-    .catch(error => console.log(error))
+function addNewDrinkLi(newDrink) {
+    const li = document.createElement("li");
+    li.textContent = newDrink.strName;
+    li.classList.add("favorite");
+    const ul = document.querySelector("#favoritesList");
+    ul.append(li);
+};
