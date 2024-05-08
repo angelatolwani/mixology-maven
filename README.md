@@ -18,8 +18,12 @@ Core Deliverables:
 4. ForEach methods are used to display the list of drinks after user hits submit, and to display the list of ingredients & measurements.
 5. Functions are abstracted where possible.
 
-Stretch goals:
-1. Allow the user to "favorite" drink recipes -- create a db.json that gets updated when a user adds to favorites (use unique object ID)
+Stretch goals (Met):
+-Allow the user to "favorite" drink recipes using a local JSON file that gets updated when a user adds to favorites
 
-Future Directions: 
-- Allow the user to enter the number of servings they would like to make, and update the recipe accordingly (measurements are given stored in the cocktail database inconsistent strings)
+Stetch goals (Unmet):
+- Allow the user to enter the number of servings they would like to make, and update the recipe accordingly (this was more difficult than anticipated because measurements stored in the cocktail API are inconsistent strings)
+
+Next Steps: 
+- Enable the interactivity on the favorites list similar to the interactivity of the menu (mouse over, click)
+- Prevent user from adding the same drink to the favorites list multiple times
