@@ -71,6 +71,8 @@ function handleClick(drink) {
     document.querySelector("#ingredientTitle").textContent = "Ingredients";
     document.querySelector("#instructionsTitle").textContent = "Instructions";
     document.querySelector("#drinkInstructions").textContent = drink.strInstructions;
+    document.querySelector("#favoriteButton").style.visibility = "visible";
+    document.querySelector("#favoriteButton").textContent = "\u2661 Add to Favorites";
     removeCurrentIngredientList();
     createIngredientList(drink);
 };
@@ -112,5 +114,23 @@ function removeDrinkRecipe() {
     document.querySelector("#drinkInstructions").textContent = "";
     document.querySelector("#ingredientTitle").textContent = "";
     document.querySelector("#instructionsTitle").textContent = "";
+    document.querySelector("#favoriteButton").style.visibility = "hidden";
     removeCurrentIngredientList();
+};
+
+
+addFavoriteButton();
+function addFavoriteButton() {
+    const button = document.querySelector("#favoriteButton");
+    button.addEventListener("click", event => {
+        event.preventDefault();
+        const drinkName = document.querySelector("#drinkName").textContent;
+        const li = document.createElement("li");
+        li.textContent = drinkName;
+        li.classList.add("favorite");
+        const ul = document.querySelector("#favoritesList");
+        ul.append(li);
+        button.textContent = "Added to Favorites!";
+        button.style.color = 'red';
+    });
 };

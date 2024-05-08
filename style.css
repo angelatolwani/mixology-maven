@@ -7,6 +7,34 @@ body {
     font-family: sans-serif;
   }
 
+#sidebar {
+  width: 150px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  /* background-color: #f4f4f4; */
+  padding: 10px;
+  /* border-right: 2px solid #ccc; */
+  margin-top: 100px;
+  text-align: center;
+  /* font-family: cursive; */
+}
+
+ul#favoritesList {
+  padding-left: 0px;
+}
+
+li.favorite {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+#main-content {
+  margin-left: 100px;
+  padding: 20px;
+}
+
 div {
   text-align: center;
 }
@@ -74,4 +102,18 @@ li.ingredient {
 
 p {
   margin-top: 0;
+}
+
+#favoriteButton {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  /* outline: none; */
+  visibility: hidden;
+  margin-bottom: 1em;
+}
+
+#favoriteButton:hover {
+  opacity: 0.7;
+  color: red;
 }

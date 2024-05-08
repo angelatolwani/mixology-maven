@@ -6,29 +6,37 @@
         <script defer src="script.js"></script>
     </head>
     <body>
-        <div id="header">
-            <!-- <img src = "./images/drinks1.png" width="100" height="100"> -->
-            <h1>Happy Hour Hangout</h1>
-            <!-- <img src = "./images/drinks2.png" width="100" height="100"> -->
+        <div id="sidebar">
+            <h3 id="favoriteTitle">Favorites</h3>
+            <ul id="favoritesList">
+            </ul>
         </div>
-        <div>
-            <form id="searchBox">
-                <label>Enter Drink Name</label>
-                <input type="text" id="drink" />
-                <input type="submit" value="Search" />
-            </form>
-        </div>
-        <div id="drinkMenu">
-            <h5 id="errorMessage"></h5>
-            <ul id="drinkList"></ul>
-        </div>
-        <div id="drinkRecipe">
-            <h3 id="drinkName"></h3>
-            <img id="drinkImage" width="200" height="200"/>
-            <h4 id="ingredientTitle"></h4>
-            <ol id="drinkIngredients"></ol>
-            <h4 id="instructionsTitle"></h4>
-            <p id="drinkInstructions"></p>
+        <div id="main-content">
+            <div id="header">
+                <!-- <img src = "./images/drinks1.png" width="100" height="100"> -->
+                <h1>Happy Hour Hangout</h1>
+                <!-- <img src = "./images/drinks2.png" width="100" height="100"> -->
+            </div>
+            <div>
+                <form id="searchBox">
+                    <label>Enter Drink Name</label>
+                    <input type="text" id="drink" />
+                    <input type="submit" value="Search" />
+                </form>
+            </div>
+            <div id="drinkMenu">
+                <h5 id="errorMessage"></h5>
+                <ul id="drinkList"></ul>
+            </div>
+            <div id="drinkRecipe">
+                <h3 id="drinkName"></h3>
+                <button id="favoriteButton" style="visibility: hidden"></button>
+                <img id="drinkImage" width="200" height="200"/>
+                <h4 id="ingredientTitle"></h4>
+                <ol id="drinkIngredients"></ol>
+                <h4 id="instructionsTitle"></h4>
+                <p id="drinkInstructions"></p>
+            </div>
         </div>
     </body>
 </html>
