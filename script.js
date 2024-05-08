@@ -124,13 +124,44 @@ function addFavoriteButton() {
     const button = document.querySelector("#favoriteButton");
     button.addEventListener("click", event => {
         event.preventDefault();
-        const drinkName = document.querySelector("#drinkName").textContent;
-        const li = document.createElement("li");
-        li.textContent = drinkName;
-        li.classList.add("favorite");
-        const ul = document.querySelector("#favoritesList");
-        ul.append(li);
+        addToFavorites();
         button.textContent = "Added to Favorites!";
         button.style.color = 'red';
     });
 };
+
+function addToFavorites() {
+    const drinkName = document.querySelector("#drinkName").textContent;
+    fetch("http://localhost:3000/favoriteDrinks", {
+        method: "POST",
+        headers: {
+            "Content-Type": "applications/json",
+            "Accept": "applications/json"
+        },
+        body: JSON.stringify({
+            strName: drinkName
+        })
+    })
+    .then(response => response.json())
+    .then(newDrink => {
+        const li = document.createElement("li");
+        li.textContent = newDrink.strName;
+        li.classList.add("favorite");
+        const ul = document.querySelector("#favoritesList");
+        ul.append(li);
+    })
+    .catch(error => console.log(error))
+};
+
+fetch("http://localhost:3000/favoriteDrinks")
+    .then(response => response.json())
+    .then(favoriteDrinks => {
+        favoriteDrinks.forEach(favoriteDrink => {
+            const li = document.createElement("li");
+            li.textContent = favoriteDrink.strName;
+            li.classList.add("favorite");
+            const ul = document.querySelector("#favoritesList");
+            ul.append(li);
+        })
+    })
+    .catch(error => console.log(error))
