@@ -1,4 +1,4 @@
-# Phase 1 Project
+# Mixology Maven
 
 Using the public drinks API https://www.thecocktaildb.com/api.php, the user is able to search for a drink and find its ingredients and recipes. The user is also able to "favorite" drink recipes, using fetch requests to store favorite drinks to a local JSON file.
 
